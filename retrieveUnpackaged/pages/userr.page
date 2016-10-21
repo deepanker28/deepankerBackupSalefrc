@@ -1,0 +1,9 @@
+<apex:page standardController="User__c" extensions="getUserr">
+  <apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!valu}" var="val">
+<!--  <apex:column value=""/>  -->
+   </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

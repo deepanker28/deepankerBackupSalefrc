@@ -1,0 +1,14 @@
+<apex:page standardController="Casting__c" extensions="cast1" recordSetVar="casting">
+<apex:form >
+ <apex:pageBlock >
+ <apex:pageBlockSection >
+ </apex:pageBlockSection>
+ <apex:pageBlockSection >
+ <apex:pageBlockTable value="{!casting}" var="cas">
+ <apex:column value="{!cas.Name}"/>
+ <apex:column ><apex:commandButton action="{!selecttt}" value="select"/></apex:column>
+ </apex:pageBlockTable>
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+</apex:form>
+</apex:page>

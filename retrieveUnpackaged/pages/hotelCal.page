@@ -1,0 +1,95 @@
+<apex:page >
+<!-- <apex:includeScript value="{!URLFOR($Resource.jQueryy, 'jQuery/jQuery.js')}"/> -->
+<apex:includeScript value="https://code.jquery.com/jquery-2.2.0.min.js"/>
+
+ <script>
+ var j$= jQuery.noConflict();
+ function show(){
+ alert('hello');
+
+j$("#account-dialog").show();
+alert('done');
+ }
+
+ function hide(){
+  j$("#account-dialog").hide();
+ }
+ </script>
+  <!-- Begin Default Content REMOVE THIS /resource/SLDS0121/assets/styles/salesforce-lightning-design-system.min.css"/>-->
+  <apex:stylesheet value="{!URLFOR($Resource.SLDS0121, 'assets/styles/salesforce-lightning-design-system.min.css')}"/>
+ <input type="button" value="submit" onClick="show()" />
+ 
+ 
+  
+  
+        <div id="account-dialog" style="display:none;">
+            <div aria-hidden="false" role="dialog" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <div class="slds-modal__header">
+                        <h2 id="account-dialog-header" class="slds-text-heading--medium">New Account</h2>
+                    </div>
+                    <div class="slds-modal__content">
+                        <div class="slds-card">
+                            <div class="slds-card__header slds-grid">
+                                <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                                    <div class="slds-media__figure">
+                                       
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-text-heading--small slds-truncate">General Information</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col--padded" style="padding:1rem;">
+                            <div class="slds-form-element is-required">
+                                <label for="account-name" class="slds-form-element__label">Account Name</label>
+                                <input id="account-name" fieldname="Name" class="slds-input" required="true"></input>
+                            </div>
+                            <div class="slds-form-element">
+                                <label for="account-phone" class="slds-form-element__label">Phone</label>
+                                <input id="account-phone" fieldname="Phone" class="slds-input slds-form-element__control phone-number"></input>
+                            </div>
+                        </div>
+                        <div class="slds-card">
+                            <div class="slds-card__header slds-grid">
+                                <div class="slds-media slds-media--center slds-has-flexi-truncate">
+                                    <div class="slds-media__figure">
+                                        
+                                    </div>
+                                    <div class="slds-media__body">
+                                        <h2 class="slds-text-heading--small slds-truncate">Billing Address</h2>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="slds-col--padded" style="padding:1rem;">
+                            <div class="slds-form-element is-required">
+                                <label for="account-billing-street" class="slds-form-element__label">Street Address</label>
+                                <input id="account-billing-street" fieldname="BillingStreet" class="slds-input slds-form-element__control" required="true"></input>
+                            </div>
+                            <div class="slds-form-element is-required">
+                                <label for="account-billing-city" class="slds-form-element__label">City</label>
+                                <input id="account-billing-city" fieldname="BillingCity" class="slds-input slds-form-element__control" required="true"></input>
+                            </div>
+                            <div class="slds-form-element is-required">
+                                <label for="account-billing-state" class="slds-form-element__label">State</label>
+                                <input id="account-billing-state" fieldname="BillingState" class="slds-input slds-form-element__control" required="true"></input>
+                            </div>
+                            <div class="slds-form-element is-required">
+                                <label for="account-billing-postal-code" class="slds-form-element__label">Zip Code</label>
+                                <input id="account-billing-postal-code" fieldname="BillingPostalCode" class="slds-input slds-form-element__control" required="true"></input>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slds-modal__footer">
+                       
+                         <button id="account-dialog-cancel" type="button" class="slds-button slds-button--neutral" onCLick="hide()">Cancel</button>  
+                        <button id="account-dialog-save" type="button" class="slds-button slds-button--brand">Save</button>
+                    </div>
+                </div>
+            </div>
+            <div class="slds-modal-backdrop slds-modal-backdrop--open"></div>
+        </div>
+ 
+</apex:page>

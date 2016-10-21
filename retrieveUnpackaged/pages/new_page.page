@@ -1,0 +1,7 @@
+<apex:page controller="AccountsandContacts" >
+<apex:pageBlock >
+<apex:pageBlockSection title="records">
+<apex:outputText value="{!records}"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>

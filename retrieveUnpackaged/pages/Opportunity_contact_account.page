@@ -1,0 +1,11 @@
+<apex:page standardController="Contact" extensions="popups">
+<apex:form >
+  <apex:pageBlock >
+  <apex:pageBlockTable value="{!account}" var="acc">
+  <apex:column ><apex:inputField value="{!acc.Name}"/>
+  </apex:column>
+ <!-- <apex:column><apex:inputCheckbox value="{!acc.selected}"/></apex:column> -->
+  </apex:pageBlockTable>
+  </apex:pageBlock>
+  </apex:form>
+</apex:page>

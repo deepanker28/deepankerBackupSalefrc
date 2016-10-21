@@ -1,0 +1,83 @@
+<apex:page standardController="Contact" extensions="TestPopup">
+<apex:includeLightning />
+
+
+<div id="lightning"  />
+<div id="lightning1" style=" width:350px;float:left;padding:10px;"/>
+<div id="lightning2" />
+
+
+
+
+<!--
+<table>
+<tr>
+<td onClick="popup()">1</td>
+<td onClick="popup()">2</td>
+</tr>
+<tr>
+<td onClick="popup()">3</td>
+<td onClick="popup()">4</td>
+</tr>
+</table> -->
+<apex:includeScript value="https://code.jquery.com/jquery-2.2.0.min.js"/>
+
+
+
+ <script>
+ var j$=jQuery.noConflict();
+ 
+ 
+ alert("yellow");
+ 
+ function popup(){
+ 
+
+
+ alert("hey");
+
+        $Lightning.use("c:TaskApp", function() {
+            $Lightning.createComponent(
+                "c:Task1Comp1",
+                {},
+                "lightning",
+                function(cmp) {
+                //     j$("#account-dialog").show();
+                    alert("done");
+                  console.log("hello");
+                });
+                
+                $Lightning.createComponent(
+                "c:Task1Comp3",
+                {},
+                "lightning1",
+                function(cmp) {
+                //     j$("#account-dialog").show();
+                    alert("done");
+                  console.log("hello");
+                });
+                
+                $Lightning.createComponent(
+                "c:Task1Comp4",
+                {},
+                "lightning2",
+                function(cmp) {
+                //     j$("#account-dialog").show();
+                    alert("done");
+                  console.log("hello");
+                });
+            });
+            
+            
+           alert("hey1");
+            }
+            
+         popup();   
+             
+    </script>
+    
+
+
+
+
+</apex:page>

@@ -1,0 +1,23 @@
+<apex:page standardController="User__c" extensions="CheckLogin">
+
+<apex:form >
+<apex:messages />
+<style>
+p.ex1 {
+    margin-left: 2pxl;
+}
+</style>
+<apex:pageBlock >
+<apex:pageBlockSection title="Login">
+<apex:inputText value="{!userName}" label="User Name" id="UserName_validation"/>
+<apex:inputSecret value="{!Password}" label="Password" id="Password_validation"/>
+<p class="ex1"><apex:commandButton value="Login" action="{!loginn}"></apex:commandButton></p>
+<apex:commandButton value="Cancel" action="{!cancel}"/>
+
+<apex:commandLink value="New User" action="{!sendRegister}"/>
+
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,24 @@
+<apex:page controller="homePage">
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection >
+<apex:commandButton value="Login" action="{!loginn}"/>
+<apex:commandButton value="Register" action="{!registerr}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Products" columns="2">
+
+
+<apex:repeat value="{!Items}" var="itm" >
+<apex:image url="{!URLFOR($Resource.image1,'abc1/')}{!itm.Image_Name__c}" height="175" width="150"/>
+<apex:outputField value="{!itm.Price__c}"/>
+<apex:commandLink value="{!itm.Name}" action="{!product}"><apex:param name="a"  value="{!itm.id}"/></apex:commandLink>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+</apex:repeat>
+
+
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+ 
+</apex:page>

@@ -1,0 +1,39 @@
+<apex:page controller="Checkbox_Class" Tabstyle="Account">
+  <apex:form >
+   <apex:pageBlock Title="List of Accounts" >
+    <apex:pageBlockButtons >
+     <apex:commandButton value="Display the selected Records" action="{!GetSelected}" rerender="Selected_PBS,table2,table1"/>
+       </apex:pageBlockButtons>
+         <apex:pageblockSection >
+            <apex:pageBlockSection Title="List of Available Accounts" columns="2" >
+                <apex:pageblockTable value="{!accounts}" var="a" >
+                    <apex:column headerValue="Select" width="60">
+                      <apex:inputCheckbox value="{!a.selected }" id="checkedone" />
+                    </apex:column>
+                    <apex:column headervalue="Account Name" value="{!a.acc.Name}" width="200"/>
+                    <apex:column headervalue="Phone" value="{!a.acc.Phone}" width="300"/>
+                </apex:pageblocktable>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection Title="Selected Accounts" id="Selected_PBS">
+                <apex:pageblockTable value="{!SelectedAccounts}" var="s"  >
+                      <apex:column headervalue="Account Name" value="{!s.Name}" width="30"/>
+                      <apex:column headervalue="Phone" value="{!s.Phone}" width="30"/>
+                </apex:pageblockTable>
+            </apex:pageBlockSection>
+        </apex:pageblockSection>
+       
+     </apex:pageBlock>
+     <apex:pageBlock title="list of contacts">
+      
+      <apex:pageBlockSection title="List of available Contacts " columns="2">
+        <apex:pageBlockTable id="table1" value="{!Contact}" var="c">
+        <apex:column headerValue="Name" value="{!c.Name}"/>
+        </apex:pageBlockTable>
+    
+        <apex:pageBlockTable title="selected contact" value="{!selectedContacts}" var="sc" id="table2">
+        <apex:column headerValue="name" value="{!sc.Name}"/>
+        </apex:pageBlockTable>
+        </apex:pageBlockSection>
+        </apex:pageBlock>
+  </apex:form>
+</apex:page>

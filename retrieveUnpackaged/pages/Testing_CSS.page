@@ -1,0 +1,31 @@
+<apex:page standardController="Account" recordSetVar="account">
+<apex:form >
+<style>
+# j_id0:j_id1:j_id3:j_id4:j_id5header:sortDiv{
+color:green !important;
+}
+ .TableTitle {
+    background-color:white  !important;
+    background-image: none !important; //This is needed if you want to overwrite the header background
+    color: red !important;
+    font-size:200% !important; 
+    text-align:center;
+    }
+.abc
+{
+color: red;
+font-family:"Times New Roman",serif ;
+font-style:italic;
+
+}
+</style>
+<apex:pageBlock >
+<apex:pageBlockTable styleClass="TableTitle" style=""  value="{!account}" var="acc" >
+<apex:column headerClass="abc" value="{!acc.Name}"/>
+<apex:column value="{!acc.CustomerPriority__c}"/>
+<apex:column value="{!acc.Phone}"/>
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form>
+  
+</apex:page>

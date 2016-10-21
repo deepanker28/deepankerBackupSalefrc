@@ -1,0 +1,44 @@
+<apex:page >
+<apex:includeScript value="/lightning/lightning.out.js" /> 
+<table >
+<tr>
+<td onClick="cliss()"></td>
+<td onClick="cliss()"></td>
+</tr>
+<tr>
+<td onClick="cliss()">1</td>
+<td onClick="cliss()">2</td>
+</tr>
+<tr>
+<td onClick="cliss()">3</td>
+<td onClick="cliss()">4</td>
+</tr>
+<tr>
+<td onClick="cliss()">5</td>
+<td onClick="cliss()">6</td>
+</tr>
+
+
+</table>
+
+ <script>
+        $Lightning.use("c:CompanySurvey", function() {
+            $Lightning.createComponent(
+                "c:CalculateTotal",
+                {},
+                "theLead",
+                function(cmp) {
+                cmp.set("inputOne",1);
+                cmp.set("inputTwo",2);
+                cmp.set("inputThree",5);
+                cmp.set("v.adda",  ss  );
+                    console.log(ss);
+                    console.log("Component created!");
+                    console.log(cmp);
+                });
+            });
+    </script>
+
+
+
+</apex:page>

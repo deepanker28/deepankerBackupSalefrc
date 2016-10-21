@@ -1,0 +1,117 @@
+<apex:page controller="accnt">
+    <apex:includeScript value="{!$Resource.bootstrapDeepanker}"/>
+    <apex:includeScript value="{!$Resource.cometd}"/>
+    <apex:includeScript value="{!$Resource.jQueryStreaming}"/>    
+    <apex:includeScript value="{!$Resource.json2}"/>
+    <apex:includeScript value="{!$Resource.jqueryComted}"/>    
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Notification__c" jsShorthand="notification" 
+            fields="Name,Id">
+            <apex:remoteObjectField name="Channel__c" jsShorthand="channel"/>
+            <apex:remoteObjectField name="Created_Date__c" jsShorthand="CreatedDate"/>
+            <apex:remoteObjectField name="Event_Type__c" jsShorthand="EventType"/>
+            <apex:remoteObjectField name="Id__c" jsShorthand="idd"/>
+            <apex:remoteObjectField name="Record_Name__c" jsShorthand="RecordName"/>
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+   
+    <apex:form >
+   <apex:actionFunction name="rerenderPageBlock"  reRender="abc,ax"/> 
+ <!--  <apex:actionFunction name="rerenderPageBlock2"  reRender="xyz,ac1"/>  -->
+   <script>
+      var createNoti=new SObjectModel.notification();
+        var j$ = jQuery.noConflict();
+       
+        j$(document).ready(function() {
+            showNotification();
+            j$.cometd.init({
+                url: window.location.protocol+'//'+window.location.hostname+'/cometd/24.0/',
+                requestHeaders: { Authorization: 'OAuth {!$Api.Session_ID}'}
+            });
+            
+            j$.cometd.subscribe('/topic/test', function(message) { 
+              var channel=JSON.stringify(message.channel);
+              var createdDate=JSON.stringify(message.data.event.createdDate);
+              var type=JSON.stringify(message.data.event.type);
+              var idd=JSON.stringify(message.data.sobject.Id);
+              var recName=JSON.stringify(message.data.sobject.Name)
+              
+              var subChannl=channel.substring(1,channel.length-1);
+              var subCreatedDate=createdDate.substring(1,createdDate.length-1);
+              var subType=type.substring(1,type.length-1);
+              var subIdd=idd.substring(1,idd.length-1);
+              var subRecName=recName.substring(1,recName.length-1);
+             
+         //   j$('#content').append('Notification : <br/> Record Name :'+JSON.stringify(message.data.sobject.Name))                  
+                    var getDetail = {channel : subChannl ,CreatedDate : subCreatedDate , EventType : subType , idd : subIdd , RecordName : subRecName};                                                          
+                    createNoti.create(getDetail);
+                    rerenderPageBlock();
+                     setTimeout(showNotification, 3000);
+                                                  
+                                                          
+            });           
+       });
+         
+     function showNotification(){
+      alert('hahaha');
+       setTimeout(7000);alert();
+           createNoti.retrieve(
+            function(err, records, event){
+    
+               if(err) {
+                    alert(err.message);
+                } 
+                else {   
+                                
+                      records.forEach(function(record){
+                            alert("helloo");
+                            var rec=record.get("RecordName")+'  '+ record.get("CreatedDate") + '  ' +record.get("EventType");
+                            alert(rec);
+                            var ulist= document.getElementById("notificationList");
+                            var list1 = document.createElement("li");
+                            list1.appendChild(document.createTextNode(rec));
+                            ulist.appendChild(list1); 
+                            
+                            
+                    });
+                }
+            }
+            );
+     
+         alert('in the method');
+          
+        }
+   </script>
+   
+    <body>
+    <div id="content">
+    <h1>Streaming API Test Page</h1>
+    <h2>Recent Notification</h2>
+    
+    </div>
+    </body>
+   <div >
+    <ui id="notificationList">
+   </ui>
+   </div>
+    <apex:pageBlock id="abc">
+    <apex:repeat value="{!acca}" var="ac" id="ax">
+    <br/>
+    <apex:outputField value="{!ac.Name}"/>
+    </apex:repeat>      
+    </apex:pageBlock>
+    
+    <apex:pageBlock >
+   <apex:outputPanel id="abcd" >
+   
+ <!--   <apex:repeat value="{!notifications}" var="not" id="ax" >
+    <br/>
+    <apex:outputField value="{!not.Event_Type__c}"/>&nbsp;
+     <apex:outputField value="{!not.Record_Name__c }"/>&nbsp;
+      <apex:outputField value="{!not.Created_Date__c}"/>&nbsp;
+    </apex:repeat> -->
+     </apex:outputPanel>
+   </apex:pageBlock>
+  
+    </apex:form>
+</apex:page>

@@ -1,0 +1,22 @@
+<apex:page controller="wrapper">
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockSection title="Account" columns="2">
+<apex:pageBlockTable value="{!account}" var="acc">
+<apex:column ><apex:inputCheckbox selected="false"/></apex:column>
+<apex:column ><apex:outputField value="{!acc.Name}"/></apex:column>
+</apex:pageBlockTable>
+<apex:commandButton action="{!move}" value="move"/>
+<apex:pageBlockTable value="{!account2}" var="acc2">
+<apex:column ></apex:column>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Contacts" columns="2">
+<apex:pageBlockTable value="{!contacts}" var="con">
+</apex:pageBlockTable>
+<apex:pageBlockTable value="{!contats2}" var="con2">
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

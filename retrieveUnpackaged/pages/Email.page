@@ -1,0 +1,3 @@
+<apex:page standardController="Opportunity" extensions="sendEmail" action="{!mail}"> 
+
+</apex:page>

@@ -1,0 +1,13 @@
+<apex:page controller="getPro">
+<apex:form >
+<apex:pageBlock >
+<apex:repeat value="{!namee}" var="nm" >
+<apex:outputField value="{!nm.Name}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<apex:image url="{!URLFOR($Resource.image1,'abc1/')}{!nm.Image_Name__c}" height="300" width="300"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<apex:outputField value="{!nm.Price__c}"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<apex:commandButton value="Add to Cart" action="{!AddCart}"/>
+</apex:repeat>
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

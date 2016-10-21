@@ -1,0 +1,21 @@
+<apex:page controller="Tester">
+    <apex:variable value="{!1}" var="counter"/>
+    <table border="1">
+        <tr>
+        <td>SUN</td>
+        <td>MON</td>
+        <td>TUE</td>
+        <td>WED</td>
+        <td>THU</td>
+        <td>FRI</td>
+        <td>SAT</td>
+        </tr>
+        <tr>
+            <apex:repeat value="{!records}" var="rec">
+                <td>{!rec}</td>
+                <apex:outputText rendered="{!AND((MOD(counter, 7) == 0), (counter < records.size))}" value="</tr><tr>" escape="false"/>
+                <apex:variable var="counter" value="{!counter + 1}"/>
+            </apex:repeat>
+        </tr>
+    </table>
+</apex:page>

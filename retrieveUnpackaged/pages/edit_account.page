@@ -1,0 +1,65 @@
+<apex:page standardController="Account" extensions="edt">
+
+<script>
+function copyAddress(b0,b1,b2,b3,s0,s1,s2,s3)
+    {
+    document.getElementById(s0).value=document.getElementById(b0).value;
+    document.getElementById(s1).value=document.getElementById(b1).value;
+    document.getElementById(s2).value=document.getElementById(b2).value;
+    document.getElementById(s3).value=document.getElementById(b3).value;
+    }
+</script>
+<apex:pageBlock title="Account">
+<apex:form >
+<apex:pageBlockSection title="Account Information">
+<apex:inputField value="{!Account.Name}"/>
+<apex:inputField value="{!Account.Website}"/>
+<apex:inputField value="{!Account.phone}"/>
+<apex:inputField value="{!Account.site}"/>
+<apex:inputField value="{!Account.ParentId}">
+<apex:actionSupport event="onClick" action="{!selectContact}"><apex:param name="getContact" value="{!Account.ParentId}"/></apex:actionSupport>
+</apex:inputField>
+<apex:inputField value="{!Account.Fax}"/>
+<apex:inputField value="{!Account.sic}"/>
+<apex:inputField value="{!Account.type}"/><br/>
+<apex:inputField value="{!Account.NumberOfEmployees}"/><br/>
+<apex:inputField value="{!Account.Rating}"/>
+
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Address Information">
+<apex:inputField id="b0" value="{!Account.BillingStreet}"/>
+<apex:inputField id="s0" value="{!Account.ShippingStreet}"/>
+<apex:inputField id="b1" value="{!Account.BillingState}"/>
+<apex:inputField id="s1" value="{!Account.ShippingState}"/>
+<apex:inputField id="b2" value="{!Account.BillingPostalCode}"/>
+<apex:inputField id="s2" value="{!Account.ShippingPostalCode}"/>
+<apex:inputField id="b3" value="{!Account.BillingCountry}"/>
+<apex:inputField id="s3" value="{!Account.ShippingCountry}"/>
+<apex:inputCheckbox onclick="copyAddress('{!$Component.b0}', '{!$Component.b1}', '{!$Component.b2}', '{!$Component.b3}', '{!$Component.s0}', '{!$Component.s1}', '{!$Component.s2}', '{!$Component.s3}')"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Additional Information">
+<apex:inputField value="{!Account.SLA__c}"/>
+<apex:inputField value="{!Account.Active__c}"/>
+<apex:inputField value="{!Account.SLAExpirationDate__c}"/>
+
+<apex:inputField value="{!Account.CustomerPriority__c}"/>
+<apex:inputField value="{!Account.SLASerialNumber__c}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Description Information">
+<apex:inputField value="{!Account.Description}"/>
+</apex:pageBlockSection>
+
+<apex:commandButton action="{!save}" value="save"/>
+
+<apex:pageBlockSection title="Related list">
+<apex:pageBlockTable value="{!Account}" var="acc">
+<apex:column ><apex:inputCheckbox selected="false"/></apex:column>
+</apex:pageBlockTable>
+<!-- <apex:relatedList list="Contacts"/> -->
+</apex:pageBlockSection> 
+
+</apex:form>
+</apex:pageBlock>
+
+
+</apex:page>

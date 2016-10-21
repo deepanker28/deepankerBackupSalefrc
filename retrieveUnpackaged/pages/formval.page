@@ -1,0 +1,32 @@
+<apex:page controller="SelectListController">
+    <script>
+    function Opportunity_Validation()
+    {
+        var eterm=document.getElementById('{!$Component.RenewalForm:configblock:configsecblock:configexpire:expterms}').value;
+       
+        if(eterm=='0')
+        {
+            alert('Select Expite Term');
+        }
+       
+    }
+    </script>
+   
+
+ <apex:form id="RenewalForm">
+        <apex:pageBlock id="configblock">
+            <apex:pageBlockSection title="Configuration Option" columns="2" id="configsecblock">
+               
+                <apex:pageBlockSectionItem id="configexpire">
+                    <apex:outputLabel value="Expiry Term:" for="expireterm"/>
+                    <apex:selectList value="{!ExpireTerms}" multiselect="false" size="1" id="expterms" onchange="Opportunity_Validation();">
+                        <apex:selectOption itemValue="0" itemLabel="--none--"/>
+                        <apex:selectOption itemValue="1" itemLabel="1 Year"/>
+                        <apex:selectOption itemValue="3" itemLabel="3 Year"/>
+                        <apex:selectOption itemValue="5" itemLabel="5 Year"/>
+                    </apex:selectList>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>

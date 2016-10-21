@@ -1,0 +1,24 @@
+<apex:page standardController="Candidate__c" extensions="popUp" >
+
+<apex:pageBlock id="abc" >
+
+<apex:form >
+
+<apex:pageBlockSection title="record" >
+
+
+<apex:commandButton action="{!save}"  value="save" reRender="abc"/>
+<apex:outputField value="{!Candidate__c.Name}"></apex:outputField><br/>
+
+<apex:outputField value="{!Candidate__c.Address__c}"></apex:outputField>
+</apex:pageBlockSection>
+
+<apex:pageBlockSection title="edit"  >
+<apex:inputField value="{!Candidate__c.Name}"/>
+<apex:inputField value="{!Candidate__c.Address__c}"/>
+<apex:commandButton action="{!save}" value="save" rerender="abc"/>
+</apex:pageBlockSection>
+</apex:form>
+
+</apex:pageBlock>
+</apex:page>

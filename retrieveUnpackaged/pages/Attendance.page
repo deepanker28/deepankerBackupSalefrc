@@ -1,0 +1,22 @@
+<apex:page controller="attend">
+<apex:form >
+<apex:pageBlock >
+<apex:commandButton value="Go" action="{!getStudent}"/>
+<apex:pageBlockSection title="Class">
+<apex:selectList label="Class" value="{!selectClass}" size="1"><apex:selectOptions value="{!items}" /></apex:selectList>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Date">
+<apex:selectList label="Year" value="{!selectYear}" size="1"><apex:selectOptions value="{!item3}"/></apex:selectList>
+<apex:selectList label="Month" value="{!selectMonth}" size="1"><apex:selectOptions value="{!items1}"/></apex:selectList>
+<apex:selectList label="Date" value="{!selectDate}" size="1"><apex:selectOptions value="{!items2}"/></apex:selectList>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Students">
+<apex:pageBlockTable value="{!allStudents}" var="aS" id="st">
+<apex:column ><apex:outputField value="{!aS.student__c}"/></apex:column>
+<apex:column ><apex:inputField value="{!aS.Present__c}"/></apex:column>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+<apex:pageBlockButtons ><apex:commandButton value="submit" action="{!submit}"/></apex:pageBlockButtons>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

@@ -1,0 +1,6 @@
+<apex:page controller="extrnSoap">
+<apex:form >
+  <apex:commandButton value="click" action="{!soap}"/>
+  <apex:outputText value="{!result1}"/>
+</apex:form>
+</apex:page>

@@ -1,0 +1,72 @@
+<apex:page >
+    <!-- Remote Objects definition to set accessible sObjects and fields -->
+    
+    
+    <script>
+          function fetchWarehouses(){
+        
+            // Create a new Remote Object
+              var ulist = document.getElementById("warehousesList");
+              var a=ulist.innerHTML;
+              
+              alert(a.length);
+              
+              
+         //     list1.appendChild(document.createTextNode(" "));
+         //     ulist.appendChild(list1);
+           
+            var wh = new SObjectModel.Warehouse();
+            
+            srchElm=document.getElementById("searchh").value;
+          //  alert();
+             alert(srchElm.length);
+          //   Use the Remote Object to query for 10 warehouse records 
+           wh.retrieve(
+           { where: { 
+           Name: {like: '%'+srchElm+'%'} 
+           },limit: 10 }, function(err, records, event){
+           if(a.length>0||srchElm.length==0){
+              ulist.innerHTML='';
+              }
+           
+          
+          
+        
+               if(err) {
+                    alert(err.message);
+                } 
+                else {
+                    
+                    records.forEach(function(record) {
+                        // Build the text for a warehouse line item
+                        var whText = record.get("Name");
+                        alert(whText);
+                        whText += " -- ";
+                        whText += record.get("location");
+                        
+                        // Add the line item to the warehouses list
+                        var ulist= document.getElementById("warehousesList");
+                        var list1 = document.createElement("li");
+                        list1.appendChild(document.createTextNode(whText));
+                        ulist.appendChild(list1);
+                    });
+                }
+            }
+            );
+        };
+    </script>
+
+    <h1>Retrieve Warehouses via Remote Objects</h1>
+
+    <p>Warehouses:</p>
+    <input onkeyup="fetchWarehouses()" id="searchh" />
+    <ul id="warehousesList"></ul>
+    <!-- <button onclick=>Retrieve Warehouses</button> -->
+  <!-- Remote Objects definition to set accessible sObjects and fields -->
+    <apex:remoteObjects >
+        <apex:remoteObjectModel name="Store__c" jsShorthand="Warehouse" 
+            fields="Name,Id">
+            <apex:remoteObjectField name="Location__c" jsShorthand="location"/>
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+</apex:page>

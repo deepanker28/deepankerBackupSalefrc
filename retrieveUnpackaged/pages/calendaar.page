@@ -1,0 +1,23 @@
+<apex:page controller="Calendr">
+<apex:pageBlock title="Project Calender">
+<apex:pageBlockSection >
+
+<apex:pageBlockTable border="7" value="{!weekdays}" var="wek">
+
+
+<apex:column headerValue="Sun" value="{!wek[0]}"></apex:column>
+<apex:column headerValue="Mon" value="{!wek[1]}"></apex:column>
+<apex:column headerValue="Tue" value="{!wek[2]}"></apex:column>
+<apex:column headerValue="Wed" value="{!wek[3]}"></apex:column>
+<apex:column headerValue="Thu" value="{!wek[4]}"></apex:column>
+<apex:column headerValue="Fri" value="{!wek[5]}"></apex:column>
+<apex:column headerValue="Sat" value="{!wek[6]}"></apex:column>
+
+
+
+</apex:pageBlockTable>
+
+
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:page>

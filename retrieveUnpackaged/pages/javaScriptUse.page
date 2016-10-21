@@ -1,0 +1,13 @@
+<apex:page controller="AccountNcontacts" >
+<apex:pageBlock >
+<apex:form >
+<apex:pageBlockSection title="Account Records" columns="2">
+<apex:pageBlockTable value="{!Accountss}" var="ac">
+<apex:column ><apex:inputCheckbox selected="false"/></apex:column>
+<apex:column ><apex:outputField value="{!ac.Name}"/></apex:column>
+</apex:pageBlockTable>
+</apex:pageBlockSection>
+</apex:form>
+</apex:pageBlock>
+
+</apex:page>

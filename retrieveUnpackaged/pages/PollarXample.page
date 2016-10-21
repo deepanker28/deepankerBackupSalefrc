@@ -1,0 +1,8 @@
+<apex:page controller="getAllAccounts">
+ <apex:form id="counter">
+        <apex:repeat value="{!acc}" var="abc" >
+        <apex:outputText value="{!abc.Name}" /><br/>
+        </apex:repeat>
+        <apex:actionPoller action="{!incrementCounter}" reRender="counter" interval="5"/> 
+    </apex:form>
+</apex:page>

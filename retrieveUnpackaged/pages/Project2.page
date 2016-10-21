@@ -1,0 +1,25 @@
+<apex:page standardController="Account" extensions="record">
+<apex:form >
+<apex:pageBlock id="abc" >
+<apex:pageBlockSection title="Account">
+<apex:outputField value="{!account.Name}"></apex:outputField>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Contacts">
+<apex:pageBlockTable value="{!contacts}"  var="con" rendered="{!output}">
+<apex:column ><apex:outputField value="{!con.Name}"/></apex:column>
+<apex:column ><apex:outputField value="{!con.Phone}"/></apex:column>
+</apex:pageBlockTable>
+<apex:commandButton action="{!abc}" value="edit"  />
+
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Edit" rendered="{!input}">
+<apex:pageBlockTable value="{!contacts}" var="con2">
+<apex:column ><apex:inputField value="{!con2.Name}"/></apex:column>
+<apex:column ><apex:inputField value="{!con2.Phone}"/></apex:column>
+<apex:column ></apex:column>
+</apex:pageBlockTable>
+<apex:commandButton action="{!xyz}" value="save" reRender="abc" />
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>  
+</apex:page>

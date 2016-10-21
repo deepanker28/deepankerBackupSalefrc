@@ -1,0 +1,25 @@
+<apex:page standardController="Candidate__c" recordSetVar="Candidate__c">
+<apex:pageMessages showDetail="true"  ></apex:pageMessages>
+<apex:form >
+<apex:pageBlock title="input field" id="ip">
+<p>you are about to witness the wraith of input field</p>
+<apex:selectList value="{! filterId }" size="1">
+       <apex:selectOptions value="{! listViewOptions }"/>
+       <apex:actionSupport event="onchange" reRender="ip"/>
+  </apex:selectList>
+<apex:pageBlockTable value="{!Candidate__c}" var="car">
+
+
+<apex:column headerValue="Name"><apex:outputField value="{!car.Name}"/></apex:column>
+
+<apex:column headerValue="Post Graduation"><apex:outputField value="{!car.Post_Graduation__c}"/></apex:column>
+<apex:column headerValue="Graduation"><apex:outputField value="{!car.Graduation__c}"/></apex:column>
+<apex:column headerValue="Edit"><apex:commandButton action="{!edit}" value="save new name"/></apex:column>
+</apex:pageBlockTable>
+
+
+
+</apex:pageBlock>
+</apex:form>
+
+</apex:page>

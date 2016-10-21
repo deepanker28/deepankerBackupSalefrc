@@ -1,0 +1,18 @@
+<apex:page standardController="Account" sidebar="false" extensions="recordss">
+<apex:form >
+<apex:pageBlock id="detail">
+<apex:pageBlockTable value="{!rec}" var="rc" id="details">
+<apex:column value="{!rc.man.Name}"/>
+<apex:column ><apex:inputCheckbox value="{!rc.selected}"/></apex:column> 
+
+</apex:pageBlockTable>
+<apex:pageblockButtons >
+<apex:commandButton value="First Page" rerender="details,first,previous,next,Lastpage" action="{!FirstPage}" id="firstpage" disabled="{!prev}"/>
+<apex:commandButton value="Previous" rerender="details,first,previous,next,Lastpage" action="{!previous}" id="previous" disabled="{!prev}"/>
+<apex:commandButton value="Next"  rerender="details,first,previous,next,Lastpage" action="{!next}" id="next" disabled="{!nxt}"/>
+<apex:commandButton value="Last Page"  rerender="details,first,previous,next,Lastpage"  action="{!LastPage}" id="Lastpage" disabled="{!nxt}"/>
+</apex:pageblockButtons>
+<apex:commandButton action="{!enter}" value="save"/>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

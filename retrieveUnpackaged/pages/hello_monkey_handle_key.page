@@ -1,0 +1,8 @@
+<apex:page controller="HelloMonkeyHandleKeyController" showheader="false" 
+  action="{!redirect}" contentType="text/xml"
+  >{! '<?xml version=\"1.0\" encoding=\"UTF-8\"?>' }
+<Response>
+    <Dial>+919646242537</Dial>
+    <Say>The call failed or the remote party hung up. Goodbye.</Say>
+</Response>
+</apex:page>

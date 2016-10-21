@@ -1,0 +1,11 @@
+<apex:page controller="picklistt" >
+<apex:form >
+<apex:selectList value="{!acct}" required="true" size="1" >
+<apex:actionSupport event="onchange"  reRender="abc"/>
+<apex:selectOptions value="{!records}" />
+</apex:selectList>
+<apex:selectList value="{!contact}" size="1" id="abc">
+<apex:selectOptions value="{!conRecord}"/>
+</apex:selectList>
+</apex:form>
+</apex:page>

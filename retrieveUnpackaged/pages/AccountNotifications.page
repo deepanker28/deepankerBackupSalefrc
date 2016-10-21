@@ -1,0 +1,43 @@
+<apex:page controller="accnt">
+<apex:includeScript value="{!$Resource.bootstrapDeepanker}"/>
+    <apex:includeScript value="{!$Resource.cometd}"/>
+    <apex:includeScript value="{!$Resource.jQueryStreaming}"/>    
+    <apex:includeScript value="{!$Resource.json2}"/>
+    <apex:includeScript value="{!$Resource.jqueryComted}"/>
+<apex:remoteObjects >
+        <apex:remoteObjectModel name="Notification__c" jsShorthand="notification" 
+            fields="Name,Id">
+            <apex:remoteObjectField name="Channel__c" jsShorthand="channel"/>
+            <apex:remoteObjectField name="Object__c" jsShorthand="object"/>
+            <apex:remoteObjectField name="object_Name__c" jsShorthand="objectName"/>
+            <apex:remoteObjectField name="Created_Date__c" jsShorthand="CreatedDate"/>
+            <apex:remoteObjectField name="Date__c" jsShorthand="Date1"/>
+            <apex:remoteObjectField name="Event_Type__c" jsShorthand="EventType"/>
+            <apex:remoteObjectField name="Id__c" jsShorthand="idd"/>
+            <apex:remoteObjectField name="Record_Name__c" jsShorthand="RecordName"/>
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+    
+ <apex:remoteObjects >
+        <apex:remoteObjectModel name="Notification__c" jsShorthand="AccNotification" 
+            fields="Name,Id">
+            <apex:remoteObjectField name="Channel__c" jsShorthand="AccChannel"/>
+            <apex:remoteObjectField name="Object__c" jsShorthand="AccObject"/>
+            <apex:remoteObjectField name="object_Name__c" jsShorthand="AccObjectName"/>
+            <apex:remoteObjectField name="Created_Date__c" jsShorthand="AccCreatedDate"/>
+            <apex:remoteObjectField name="Date__c" jsShorthand="AccDate1"/>
+            <apex:remoteObjectField name="Event_Type__c" jsShorthand="AccEventType"/>
+            <apex:remoteObjectField name="Id__c" jsShorthand="AccIdd"/>
+            <apex:remoteObjectField name="Record_Name__c" jsShorthand="AccRecordName"/>
+        </apex:remoteObjectModel>
+    </apex:remoteObjects>
+       
+<apex:pageBlock >
+<apex:pageBlockSection >
+  <c:AccountComponent1 />
+</apex:pageBlockSection>
+ <apex:pageBlockSection >  
+  <c:ContactComponentNotifications />
+</apex:pageBlockSection>  
+</apex:pageBlock>
+</apex:page>
